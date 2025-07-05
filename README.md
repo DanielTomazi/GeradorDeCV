@@ -171,24 +171,6 @@ Um gerador de currículos moderno e inteligente que cria versões otimizadas par
 - **Factory Pattern**: Criação de templates
 - **Strategy Pattern**: Validações específicas
 
-## 🔄 **Roadmap de Funcionalidades**
-
-### **🚀 Próximas Versões**
-- [ ] **Import LinkedIn**: Preenchimento automático
-- [ ] **Múltiplas Versões**: Salvar diferentes versões
-- [ ] **Análise de Palavras-chave**: Otimização para ATS
-- [ ] **Templates Customizáveis**: Editor visual
-- [ ] **Export Word**: Formato .docx
-- [ ] **Integração Nuvem**: Google Drive, Dropbox
-- [ ] **Modo Colaborativo**: Compartilhamento para feedback
-- [ ] **AI Suggestions**: IA para melhorar conteúdo
-
-### **🎯 Melhorias Contínuas**
-- [ ] **Mais Validações**: Validação avançada de dados
-- [ ] **Novos Templates**: Designs sazonais
-- [ ] **Internacionalização**: Suporte a múltiplos idiomas
-- [ ] **Temas Personalizados**: Cores customizáveis
-
 ## 🤝 **Contribuindo**
 
 Este projeto segue padrões de **Clean Code** e aceita contribuições! Para contribuir:
@@ -209,14 +191,6 @@ Este projeto está licenciado sob a **Licença MIT** - veja o arquivo [LICENSE](
 - ✅ **Distribuição**: Pode distribuir cópias
 - ✅ **Uso Privado**: Pode usar privately
 - ✅ **Sublicenciamento**: Pode sublicenciar
-
-### **Condições:**
-- 📋 **Incluir Licença**: Deve incluir a licença e copyright
-- 📋 **Incluir Copyright**: Deve manter os avisos de copyright
-
-### **Limitações:**
-- ❌ **Sem Garantia**: Software fornecido "como está"
-- ❌ **Sem Responsabilidade**: Autores não são responsáveis por danos
 
 ## 🎯 **Clean Code Principles Summary**
 
