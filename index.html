@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Currículo Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <h1><i class="fas fa-file-alt"></i> Gerador de Currículo Inteligente</h1>
+                <p>Crie currículos profissionais otimizados para diferentes vagas</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="app-layout">
+                    <!-- Form Section -->
+                    <section class="form-section">
+                        <div class="form-header">
+                            <h2><i class="fas fa-user-edit"></i> Seus Dados</h2>
+                            <p>Preencha suas informações para gerar currículos personalizados</p>
+                        </div>
+
+                        <form id="cv-form" class="cv-form">
+                            <!-- Dados Pessoais -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-user"></i> Dados Pessoais</h3>
+                                <div class="input-row">
+                                    <input type="text" id="nome" placeholder="Nome completo" required>
+                                    <input type="email" id="email" placeholder="E-mail" required>
+                                </div>
+                                <div class="input-row">
+                                    <input type="tel" id="telefone" placeholder="Telefone">
+                                    <input type="text" id="linkedin" placeholder="LinkedIn (opcional)">
+                                </div>
+                                <div class="input-row">
+                                    <input type="text" id="endereco" placeholder="Cidade, Estado">
+                                    <input type="url" id="portfolio" placeholder="Portfolio/Website (opcional)">
+                                </div>
+                                <textarea id="objetivo" placeholder="Objetivo profissional ou resumo (2-3 linhas)" rows="3"></textarea>
+                            </div>
+
+                            <!-- Experiência Profissional -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-briefcase"></i> Experiência Profissional</h3>
+                                <div id="experiencias-container">
+                                    <!-- Experiências serão adicionadas dinamicamente -->
+                                </div>
+                                <button type="button" class="btn-add" onclick="addExperiencia()">
+                                    <i class="fas fa-plus"></i> Adicionar Experiência
+                                </button>
+                            </div>
+
+                            <!-- Formação -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-graduation-cap"></i> Formação</h3>
+                                <div id="formacoes-container">
+                                    <!-- Formações serão adicionadas dinamicamente -->
+                                </div>
+                                <button type="button" class="btn-add" onclick="addFormacao()">
+                                    <i class="fas fa-plus"></i> Adicionar Formação
+                                </button>
+                            </div>
+
+                            <!-- Habilidades -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-cogs"></i> Habilidades</h3>
+                                <div class="input-row">
+                                    <textarea id="habilidades-tecnicas" placeholder="Habilidades técnicas (ex: JavaScript, Python, Excel)" rows="3"></textarea>
+                                    <textarea id="habilidades-comportamentais" placeholder="Habilidades comportamentais (ex: Liderança, Comunicação)" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Idiomas -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-language"></i> Idiomas</h3>
+                                <div id="idiomas-container">
+                                    <!-- Idiomas serão adicionados dinamicamente -->
+                                </div>
+                                <button type="button" class="btn-add" onclick="addIdioma()">
+                                    <i class="fas fa-plus"></i> Adicionar Idioma
+                                </button>
+                            </div>
+
+                            <!-- Tipo de Vaga -->
+                            <div class="form-group">
+                                <h3><i class="fas fa-target"></i> Tipo de Vaga Desejada</h3>
+                                <select id="tipo-vaga" onchange="atualizarPreview()">
+                                    <option value="tecnologia">Tecnologia/TI</option>
+                                    <option value="marketing">Marketing/Comunicação</option>
+                                    <option value="vendas">Vendas/Comercial</option>
+                                    <option value="financas">Finanças/Contabilidade</option>
+                                    <option value="rh">Recursos Humanos</option>
+                                    <option value="gerencial">Gestão/Liderança</option>
+                                    <option value="criativo">Design/Criativo</option>
+                                    <option value="geral">Geral</option>
+                                </select>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Preview Section -->
+                    <section class="preview-section">
+                        <div class="preview-header">
+                            <h2><i class="fas fa-eye"></i> Visualização</h2>
+                            <div class="preview-controls">
+                                <select id="template-selector" onchange="changeTemplate()">
+                                    <option value="moderno">Moderno</option>
+                                    <option value="classico">Clássico</option>
+                                    <option value="criativo">Criativo</option>
+                                    <option value="minimalista">Minimalista</option>
+                                </select>
+                                <button type="button" class="btn-primary" onclick="downloadPDF()">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="cv-preview" id="cv-preview">
+                            <!-- O currículo será renderizado aqui -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="advanced-features.js"></script>
+</body>
+</html>
